@@ -1,17 +1,7 @@
 #!/bin/bash
+# envconf.sh
 # The script environment variable settings
-# v1.0.0
-# 
-# Example:
-# read_config
-# create_config
-# get_param GREETING "Greeting message" "Hello"
-# flush_config
-#
-# TODO:
-# To add the ability to reset config
-# Write automated tests
-# 
+# v1.0.1
 
 VAR_CONFIG_PATH=envconf.conf
 VAR_CONFIG_PATH_NEW=${VAR_CONFIG_PATH}.new
@@ -77,25 +67,25 @@ function get_param {
 
     ARG_VAR_NAME=$1
     ARG_DESC=$2
-    ARG_DEFAULT=$3
+    ARG_DEFAULT_VALUE=$3
 
     VAR_EXISTS_VALUE=${!ARG_VAR_NAME}
 
     if [[ $VAR_EXISTS_VALUE ]]
     then
-        ARG_DEFAULT=$VAR_EXISTS_VALUE
+        ARG_CURRENT_VALUE=$VAR_EXISTS_VALUE
+    else
+        ARG_CURRENT_VALUE=$ARG_DEFAULT_VALUE
     fi
 
-    read -e -p "$ARG_DESC [$ARG_DEFAULT]: " VAR_VALUE
+    read -e -p "$ARG_DESC [$ARG_DEFAULT_VALUE]: " VAR_VALUE
 
     if [[ ! $VAR_VALUE ]]
     then
-        VAR_VALUE=$VAR_EXISTS_VALUE
+        VAR_VALUE=$ARG_CURRENT_VALUE
     fi
     
     write_config $ARG_VAR_NAME $VAR_VALUE
 
     export $ARG_VAR_NAME=$VAR_VALUE
 }
-
-# Place your code after this comment
