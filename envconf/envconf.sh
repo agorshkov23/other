@@ -78,7 +78,7 @@ function get_param {
         ARG_CURRENT_VALUE=$ARG_DEFAULT_VALUE
     fi
 
-    read -e -p "$ARG_DESC [$ARG_DEFAULT_VALUE]: " VAR_VALUE
+    read -e -p "$ARG_DESC [$ARG_CURRENT_VALUE]: " VAR_VALUE
 
     if [[ ! $VAR_VALUE ]]
     then
