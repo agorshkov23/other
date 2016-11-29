@@ -6,6 +6,22 @@ Version: 1.0.1
 
 
 
+## Getting
+
+Clone the repository:
+
+```bash
+git clone https://github.com/agorshkov23/other.git && cd other/envconf/
+```
+
+Using `wget`:
+
+```bash
+wget https://raw.githubusercontent.com/agorshkov23/other/master/envconf/envconf.sh
+```
+
+
+
 ## Usage
 
 Configuring environment variable GREETING.
